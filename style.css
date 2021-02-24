@@ -1,38 +1,51 @@
+body {
+	background-color: #e9edc9;
+}
+
 h1 {
-	
+	text-align: center;
+	position: relative;
+	top: 50px;
+	text-decoration: underline;
+
 }
 
 .container {
 	display: grid;
-	grid-template-columns: 70% 30%;
-	border: 1px #ccc solid;
-	border-radius: 5px;
+	grid-template-columns: minmax(75px, 200px) minmax(75px, 200px);
+	justify-content: center;
+	position: relative;
+	top: 60px;
+	left: 50px;
 	
 }
 
 .stock_calc {
-	border: 1px #ccc solid;
-	border-radius: 2px;
+	display: flex;
+	justify-content: flex-start;
+	height: 50px;
+	
+	}
 
-}
-
-.border {
-	border: 1px #ccc solid;
-	border-radius: 2px;
-}
 
 input {
-	display: block;
-	margin-right: auto;
-	margin-left: auto;
-}
+	position: relative;
+	left: 10px;
+	width: 75px;
+	border-radius: 8px;
 
-#submission {
-	display: block;
-	margin-right: auto;
-	margin-left: auto;
 }
 
 #submit {
-border-width: : 50px
+	width: 55px;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	top: 50px;
+	right: 20px;
+}
+
+#submission:hover{
+	
+	background-color: #ccd5ae;
 }
