@@ -5,7 +5,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Calculate stock options</title>
 	<link href="style.css" type="text/css" rel="stylesheet">
-	<link href="style-library.css" type="text/css" rel="stylesheet">
 	</head>
 	<body>
 		
@@ -21,7 +20,7 @@
 		</div>
 
 		<div class="border">
-		<input id="S" type="number" name="stock_option" value="S" required>
+		<input id="S" type="number" name="stock_option" required>
 		</div>
 
 		<div id = "exercise_price" class="stock_calc">
@@ -29,7 +28,7 @@
 		</div>
 		
 		<div class="border">
-		<input id="X" type="number" name="stock_option" value="X" required>
+		<input id="X" type="number" name="stock_option" required>
 		</div>
 		
 
@@ -39,7 +38,7 @@
 
 
 		<div class="border">
-		<input id="T" type="number" name="stock_option" value="T" required>
+		<input id="T" type="number" name="stock_option" required>
 		</div>
 
 		<div id="annual_risk-free_interest_rate" class="stock_calc">
@@ -47,7 +46,7 @@
 		</div>
 
 		<div class="border">
-		<input id="r" type="number" name="stock_option" value="r" required>
+		<input id="r" type="number" name="stock_option" required>
 		</div>
 
 		<div id="annualized_volatility" class="stock_calc">
@@ -55,28 +54,45 @@
 		</div>
 		
 		<div class="border">
-		<input id= "v" type="number" name="stock_option" value="v" required>
+		<input id= "v" type="number" name="stock_option" required>
 		</div>
 		
 		</div>
 		
 		<div class="border" id="submit">
-		<input onclick="BlackScholes()" type="button" id="calculate" value="Calculate">
+		<button onclick="BlackScholes()" id=calculate>Calculate</button>
 		</div>
 	</form>
 	
+
+	
+
+
+	</body>
+
 	<script type="text/javascript">
 
 	var theForm = document.forms["blackscholes"];
-		
-	var S = parseInt(document.getElementById('S').value);
-    var X = parseInt(document.getElementById('X').value);
-    var T = parseInt(document.getElementById('T').value);
-    var r = parseInt(document.getElementById('r').value);
-    var v = parseInt(document.getElementById('v').value);
-
-	const BlackScholes = (PutCallFlag, S, X, T, r, v) => {
 	
+function CND(x){
+  if(x < 0) {
+    return ( 1-CND(-x) );
+  } else {
+    k = 1 / (1 + .2316419 * x);
+    return ( 1 - Math.exp(-x * x / 2)/ Math.sqrt(2*Math.PI) * k * (.31938153 + k * (-.356563782 + k * (1.781477937 + k * (-1.821255978 + k * 1.330274429)))) );
+  }
+}
+
+
+const BlackScholes = () => {
+
+	var S = document.getElementById('S').value;
+	var X = document.getElementById('X').value;
+	var T = document.getElementById('T').value;
+	var v = document.getElementById('r').value;
+	var v = document.getElementById('v').value;
+	var PutCallFlag = "call";
+
   var d1 = (Math.log(S / X) + (r + v * v / 2) * T) / (v * Math.sqrt(T));
   var d2 = d1 - v * Math.sqrt(T);
   if (PutCallFlag === "call") {
@@ -86,20 +102,10 @@
   }
 }
 
-function CND(x){
-  if(x < 0) {
-    return ( 1-CND(-x) );
-  } else {
-    k = 1 / (1 + .2316419 * x);
-    return ( 1 - Math.exp(-x * x / 2)/ Math.sqrt(2*Math.PI) * k * (.31938153 + k * (-.356563782 + k * (1.781477937 + k * (-1.821255978 + k * 1.330274429)))) );
-  }
+
 
   const endCalculation = BlackScholes();
-console.log(endCalculation);
-
-	</script>
-
-
-	</body>
+alert(endCalculation);
+</script>
 
 </html> 
