@@ -90,23 +90,25 @@ const BlackScholes = () => {
 	var S = document.getElementById('S').value;
 	var X = document.getElementById('X').value;
 	var T = document.getElementById('T').value;
-	var v = document.getElementById('r').value;
+	var r = document.getElementById('r').value;
 	var v = document.getElementById('v').value;
 
-	console.log("S", S);
+	console.log(S, X, T, r, v);
 
+	let optionsPrice;
 	var PutCallFlag = "call";
 
   var d1 = (Math.log(S / X) + (r + v * v / 2) * T) / (v * Math.sqrt(T));
   var d2 = d1 - v * Math.sqrt(T);
   if (PutCallFlag === "call") {
-    return ( S * CND(d1)-X * Math.exp(-r * T) * CND(d2) );
+    optionsPrice = ( S * CND(d1)-X * Math.exp(-r * T) * CND(d2) );
   } else {
-    return ( X * Math.exp(-r * T) * CND(-d2) - S * CND(-d1) );
+    optionsPrice = ( X * Math.exp(-r * T) * CND(-d2) - S * CND(-d1) );
   }
+
+	alert("New value: " + optionsPrice)
 }
 
-  const endCalculation = BlackScholes();
 </script>
 
 </html>
