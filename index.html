@@ -7,12 +7,12 @@
 	<link href="style.css" type="text/css" rel="stylesheet">
 	</head>
 	<body>
-		
-	
+
+
 	<h1>Calculate Stock Options</h1>
 	<form class="form" action="" id="blackscholes">
-		
-		
+
+
 		<div class="container">
 
 		<div id = "stock_price" class="stock_calc" required>
@@ -26,11 +26,11 @@
 		<div id = "exercise_price" class="stock_calc">
 			Exercise price&nbsp;&nbsp;<em>(USD)</em>
 		</div>
-		
+
 		<div class="border">
 		<input id="X" type="number" name="stock_option" required>
 		</div>
-		
+
 
 		<div id = "time_to_maturity" class="stock_calc">
 			Time to maturity
@@ -52,20 +52,20 @@
 		<div id="annualized_volatility" class="stock_calc">
 			Annualized volatility
 		</div>
-		
+
 		<div class="border">
 		<input id= "v" type="number" name="stock_option" required>
 		</div>
-		
+
 		</div>
-		
+
 		<div class="border" id="submit">
 		<button onclick="BlackScholes()" id=calculate>Calculate</button>
 		</div>
 	</form>
-	
 
-	
+
+
 
 
 	</body>
@@ -73,7 +73,7 @@
 	<script type="text/javascript">
 
 	var theForm = document.forms["blackscholes"];
-	
+
 function CND(x){
   if(x < 0) {
     return ( 1-CND(-x) );
@@ -85,12 +85,16 @@ function CND(x){
 
 
 const BlackScholes = () => {
+	console.log("BlackScholes");
 
 	var S = document.getElementById('S').value;
 	var X = document.getElementById('X').value;
 	var T = document.getElementById('T').value;
 	var v = document.getElementById('r').value;
 	var v = document.getElementById('v').value;
+
+	console.log("S", S);
+
 	var PutCallFlag = "call";
 
   var d1 = (Math.log(S / X) + (r + v * v / 2) * T) / (v * Math.sqrt(T));
@@ -102,10 +106,7 @@ const BlackScholes = () => {
   }
 }
 
-
-
   const endCalculation = BlackScholes();
-alert(endCalculation);
 </script>
 
-</html> 
+</html>
